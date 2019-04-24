@@ -107,6 +107,6 @@ venv.bak/
 .idea/
 
 # node.js
-.node_modules/
+node_modules/
 
 # Project specific stuff
