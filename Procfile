@@ -1,1 +1,1 @@
-web: gunicorn release-buddy.wsgi
+web: gunicorn main.wsgi
