@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'release-buddy.main.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
