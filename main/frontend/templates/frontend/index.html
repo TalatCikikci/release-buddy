@@ -1,18 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-  <title>Release Buddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <title>Release Buddy</title>
 </head>
 <body>
-  <section class="section">
-    <div class="container">
-          <div id="app" class="columns"><!-- React --></div>
-    </div>
-  </section>
+    <!-- joint.js dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+
+    <section class="section">
+        <div class="container">
+            <div id="app" class="columns"><!-- React --></div>
+        </div>
+    </section>
+
 </body>
-{% load static %}
+
 <script src="{% static "frontend/main.js" %}"></script>
 </html>
