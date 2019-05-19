@@ -1,6 +1,7 @@
 import React from 'react';
 import * as joint from 'jointjs';
 
+
 export class Requirement extends React.Component {
     componentDidMount() {
         const station = this.props.station;
@@ -15,7 +16,7 @@ export class Requirement extends React.Component {
         });
         rect.set('id', station.id);
 
-        rect.on('change:postion', (event) => {
+        rect.on('change:position', (event) => {
             this.props.onChangedPosition(station.id,
                 event.attributes.position.x,
                 event.attributes.position.y);

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as joint from 'jointjs';
 
+
 export class Relation extends React.Component {
     componentDidMount(){
         const relation = new joint.dia.Link({
