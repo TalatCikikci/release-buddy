@@ -1,38 +1,45 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {combineReducers} from 'redux-immutable';
 import {fromJS} from 'immutable';
 
-import DataProvider from "./DataProvider";
-import Table from "./Table";
-import RequirementModelComponent from './RequirementModel';
+import {HeaderComponent} from './Header';
+import {RequirementModelComponent} from './RequirementModel';
 
+import TabReducer from './TabReducer';
 import RequirementReducer from "./RequirementReducer";
+
+const reducer = combineReducers({
+	tabs: TabReducer,
+	requirements: RequirementReducer
+});
 
 const initialState = {
     tabs: [
         {name: "Goal Model", id: "model", active: true},
+        {name: "Add Goals", id: "goals", active: false }
     ],
-    requirements: [
-        {name: "req1", id: "req1", x: 100, y:200},
-        {name: "req2", id: "req2", x: 200, y:100}
-    ]
+    requirements: {
+        u1: [
+            {name: "req1", id: "req1", x: 100, y:50}
+        ],
+        u2: [
+            {name: "req2", id: "req2", x: 100, y:100}
+        ]
+    }
 };
-let store = createStore(RequirementReducer, fromJS(initialState));
 
-ReactDOM.render(
-	<Provider store={store}>
-		<div>
-			<RequirementModelComponent />
-		</div>
-	</Provider>,
-	document.getElementById('app')
-);
+let store = createStore(reducer, fromJS(initialState));
 
 const App = () => (
-  <DataProvider endpoint="api/v1/goals/goal"
-                render={data => <Table data={data} />} />
+   <Provider store={store}>
+		<div>
+           <HeaderComponent/>
+           <RequirementModelComponent/>
+		</div>
+	</Provider>
 );
 
 const wrapper = document.getElementById("app");

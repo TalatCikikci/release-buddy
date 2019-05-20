@@ -2,13 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {RelateRequirementsComponent} from './RelateRequirements';
+import DataProvider from "./DataProvider";
+import Table from "./Table";
 
 export class RequirementModel extends React.PureComponent {
 	render() {
-		// if(this.props.activeTabId === 'model') {
+		if(this.props.activeTabId === 'model') {
 			return <RelateRequirementsComponent />;
-		// }
-		// return <div>Not yet implemented</div>;
+		} else if(this.props.activeTabId === 'goals') {
+			return <DataProvider endpoint="api/v1/goals/goal" render={data => <Table data={data} />} />;
+		}
 	}
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import * as joint from 'jointjs';
 import ReactDOM from 'react-dom';
+import * as joint from 'jointjs';
 import {connect} from 'react-redux';
 
 import {Requirement} from './Requirement'
@@ -22,17 +22,17 @@ export class RelateRequirements extends React.Component {
             gridSize: 1
         });
 
-        this.graph.addCell(this.cells);
+        this.graph.addCells(this.cells);
     }
 
     renderConnection(connectionData, connectionId){
-        const connections = connectionData.map((v, i , l) => {return{current: v, next: l.get(i+1)}}).filter(relationData => relationData.next);
-        const renderedRelations = connections.map((relationData) => {return <Relation container={this.cells} from={relationData.current.toJS()} to={relationData.next.toJS()}/>});
+        const relations = connectionData.map((v, i , l) => {return{current: v, next: l.get(i+1)}}).filter(relationData => relationData.next);
+        const renderedRelations = relations.map((relationData) => {return <Relation container={this.cells} from={relationData.current.toJS()} to={relationData.next.toJS()}/>});
         return renderedRelations;
     }
 
-    renderRequirement(requirementData){
-        return <Requirement container={this.cells} requirement={requirementData.toJS()} onChangedPosition={this.props.onChangedPosition}/>
+    renderRequirement(requirement){
+        return <Requirement container={this.cells} requirement={requirement.toJS()} onChangedPosition={this.props.onChangedPosition}/>;
     }
 
     render() {
@@ -60,6 +60,6 @@ const actionCreators = {
 			y: y
 		};
 	}
-}
+};
 
 export const RelateRequirementsComponent = connect(mapStateToProperties, actionCreators)(RelateRequirements);
