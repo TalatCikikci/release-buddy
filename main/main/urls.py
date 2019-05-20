@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from backend.views import redirect_view
 
 api_urlpatterns = [
-    path('goals/', include('backend.urls')),
+    path('release-buddy/', include('backend.urls')),
 ]
 
 frontend_urlpatterns = [
@@ -25,7 +26,8 @@ frontend_urlpatterns = [
 ]
 
 urlpatterns = [
+    path('', redirect_view),
     path('admin/', admin.site.urls),
     path('api/v1/', include(api_urlpatterns)),
-    path('', include(frontend_urlpatterns))
+    path('release-buddy/', include(frontend_urlpatterns))
 ]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'knox',
     'backend',
     'frontend',
 ]
@@ -124,6 +125,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'frontend', 'static')
+
+
+# Django rest framework settings
+REST_FRAMEWORK = {
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+      'knox.auth.TokenAuthentication',
+    )
+}
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
