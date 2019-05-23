@@ -12,9 +12,14 @@ export class Header extends React.PureComponent {
 			return <li key={tab.id} ><a href="#" className={className} onClick={() => this.props.onTabClicked(tab.id)}>{tab.name}</a></li>
 		});
 		return (
-			<header>
-				<ul>{renderedTabs}</ul>
-			</header>
+			<nav className="navbar navbar-default">
+				<div className="container-fluid">
+					<div className="navbar-header">
+						<a className="navbar-brand" href="/">Release-Buddy</a>
+					</div>
+					<ul className="nav navbar-nav">{renderedTabs}</ul>
+			    </div>
+			</nav>
 		);
 	}
 }

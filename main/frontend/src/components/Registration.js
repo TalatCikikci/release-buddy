@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
+
 import {Link, Redirect} from "react-router-dom";
 
 import {auth} from "./actions/MainAction";
 
-
-export default class Login extends React.Component {
+export default class Registration extends Component {
 
   state = {
     username: "",
@@ -14,7 +14,7 @@ export default class Login extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.login(this.state.username, this.state.password);
+    this.props.register(this.state.username, this.state.password);
   };
 
   render() {
@@ -24,7 +24,7 @@ export default class Login extends React.Component {
     return (
       <form onSubmit={this.onSubmit}>
         <fieldset>
-          <legend>Login</legend>
+          <legend>Register</legend>
 {/*          {this.props.errors.length > 0 && (
             <ul>
               {this.props.errors.map(error => (
@@ -45,19 +45,19 @@ export default class Login extends React.Component {
               onChange={e => this.setState({password: e.target.value})} />
           </p>
           <p>
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
           </p>
 
           <p>
-            Don't have an account? <Link to="/release-buddy/register">Register</Link>
+            Already have an account? <Link to="/release-buddy/login">Login</Link>
           </p>
         </fieldset>
       </form>
     )
   }
 }
-/*
-const mapStateToProps = state => {
+
+/*const mapStateToProps = state => {
   let errors = [];
   if (state.auth.errors) {
     errors = Object.keys(state.auth.errors).map(field => {
@@ -68,14 +68,13 @@ const mapStateToProps = state => {
     errors,
     isAuthenticated: state.auth.isAuthenticated
   };
-};
+};*/
 
-const mapDispatchToProps = dispatch => {
+/*const mapDispatchToProps = dispatch => {
   return {
-    login: (username, password) => {
-      return dispatch(auth.login(username, password));
-    }
+    register: (username, password) => dispatch(auth.register(username, password)),
   };
-};
+};*/
+/*
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);*/
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);*/

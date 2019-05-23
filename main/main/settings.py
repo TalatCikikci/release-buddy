@@ -131,7 +131,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'frontend', 'static')
 REST_FRAMEWORK = {
   'DEFAULT_AUTHENTICATION_CLASSES': (
       'knox.auth.TokenAuthentication',
-    )
+    ),
 }
 
 

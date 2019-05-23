@@ -2,25 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from "redux-thunk";
 import {combineReducers} from 'redux-immutable';
 import {fromJS} from 'immutable';
 
 import {HeaderComponent} from './Header';
 import {RequirementModelComponent} from './RequirementModel';
+import {RootContainer} from './RootContainer';
 import Login from './Login';
 import NotFound from './NotFound';
 
 import get_reducers from './reducers/MainReducer';
-import TabReducer from './reducers/TabReducer';
-import RequirementReducer from "./reducers/RequirementReducer";
+import Registration from "./Registration";
 
-const reducer = get_reducers();
+const release_buddy = get_reducers();
 
 const initialState = {
     tabs: [
         {name: "Goal Model", id: "model", active: true},
-        {name: "Add Goals", id: "goals", active: false }
+        {name: "Add Goals", id: "goals", active: false}
     ],
     requirements: {
         u1: [
@@ -31,16 +32,25 @@ const initialState = {
             {name: "req2", id: "req2", x: 100, y:100},
             {name: "req4", id: "req4", x: 50, y:25}
         ]
+    },
+    auth: {
+        token: localStorage.getItem("token"),
+        isAuthenticated: null,
+        isLoading: true,
+        user: null,
+        errors: {},
     }
 };
 
-let store = createStore(reducer, fromJS(initialState));
+let store = createStore(release_buddy, fromJS(initialState), applyMiddleware(thunk));
 
 const App = () => (
         <Provider store={store}>
+{/*            <RootContainer />*/}
             <BrowserRouter>
                 <HeaderComponent/>
                 <Switch>
+                    <Route exact path="/release-buddy/register" component={Registration} />
                     <Route exact path="/release-buddy/" component={RequirementModelComponent} />
                     <Route exact path="/release-buddy/login" component={Login} />
                     <Route component={NotFound} />
