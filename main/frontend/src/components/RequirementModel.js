@@ -10,7 +10,7 @@ export class RequirementModel extends React.PureComponent {
 		if(this.props.activeTabId === 'model') {
 			return <RelateRequirementsComponent />;
 		} else if(this.props.activeTabId === 'goals') {
-			return <div class="fa-columns"><DataProvider endpoint="/api/v1/release-buddy/goal" render={data => <Table data={data} />} /></div>;
+			return <div className="fa-columns"><DataProvider endpoint="/api/v1/release-buddy/goal" render={data => <Table data={data} />} /></div>;
 		}
 	}
 }

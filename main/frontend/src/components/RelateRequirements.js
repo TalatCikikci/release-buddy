@@ -26,7 +26,7 @@ export class RelateRequirements extends React.Component {
     }
 
     renderConnection(connectionData, connectionId){
-        const relations = connectionData.map((v, i , l) => {return{current: v, next: l.get(i+1)}}).filter(relationData => relationData.next);
+        const relations = connectionData.map((v, i, l) => {return{current: v, next: l.get(i+1)}}).filter(relationData => relationData.next);
         const renderedRelations = relations.map((relationData) => {return <Relation container={this.cells} from={relationData.current.toJS()} to={relationData.next.toJS()}/>});
         return renderedRelations;
     }

@@ -1,8 +1,13 @@
 import React from 'react';
 import * as joint from 'jointjs';
+import PropTypes from "prop-types";
 
 
 export class Requirement extends React.Component {
+    static propTypes = {
+        requirement: PropTypes.string.isRequired,
+    };
+
     componentDidMount() {
         const requirement = this.props.requirement;
 
