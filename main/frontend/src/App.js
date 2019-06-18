@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import ReactDOM from "react-dom";
 import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -7,18 +7,50 @@ import thunk from "redux-thunk";
 import {combineReducers} from 'redux-immutable';
 import {fromJS} from 'immutable';
 
-import {HeaderComponent} from './Header';
-import {RequirementModelComponent} from './RequirementModel';
-import {RootContainer} from './RootContainer';
-import Login from './Login';
-import NotFound from './NotFound';
+import {HeaderComponent} from './components/Header';
+import {RequirementModelComponent} from './components/RequirementModel';
+import {RootContainer} from './components/RootContainer';
+import Login from './components/Login';
+import NotFound from './components/NotFound';
 
 import get_reducers from './reducers/MainReducer';
-import Registration from "./Registration";
+import Registration from "./components/Registration";
 
-const release_buddy = get_reducers();
+const release_buddy = get_reducers();*/
 
-const initialState = {
+import React from 'react';
+import Navbar from './components/Navbar';
+import Footer from "./components/Footer";
+import GoalGraph from './components/GoalGraph';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import RequirementInfo from './components/RequirementInfo';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route exact path='/release-buddy/' component={GoalGraph} />
+          <Route path='/release-buddy/about' component={About} />
+          <Route path='/release-buddy/contact' component={Contact} />{/*
+          <Route path="/release-buddy/:requirement_id" component={RequirementInfo} />*/}
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+
+
+/*const initialState = {
     tabs: [
         {name: "Goal Model", id: "model", active: true},
         {name: "Add Goals", id: "goals", active: false}
@@ -46,7 +78,7 @@ let store = createStore(release_buddy, fromJS(initialState), applyMiddleware(thu
 
 const App = () => (
         <Provider store={store}>
-{/*            <RootContainer />*/}
+{/!*            <RootContainer />*!/}
             <BrowserRouter>
                 <HeaderComponent/>
                 <Switch>
@@ -61,4 +93,4 @@ const App = () => (
 
 const wrapper = document.getElementById("app");
 
-wrapper ? ReactDOM.render(<App />, wrapper) : null;
+wrapper ? ReactDOM.render(<App />, wrapper) : null;*/

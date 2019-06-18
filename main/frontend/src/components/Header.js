@@ -16,7 +16,7 @@ export class Header extends React.PureComponent {
 
 		return (
 			<nav className="navbar is-light" role="navigation" aria-label="main navigation">
-				<div className="navbar-brand">
+				<div className="navbar-brand font-weight-bold">
 					<a className="navbar-item" href="/">
 						<img src="../../static/img/android-chrome-192x192.png" alt="Release Buddy Logo"/>
 					</a>

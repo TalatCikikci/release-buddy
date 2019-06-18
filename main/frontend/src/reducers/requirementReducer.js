@@ -1,5 +1,3 @@
-import {Map, fromJS} from 'immutable';
-
 const initialState = {
         u1: [
             {name: "req1", id: "req1", x: 25, y:150},
@@ -11,7 +9,7 @@ const initialState = {
         ]
 };
 
-export default function requirements (state=initialState, action) {
+export default function requirementReducer (state = initialState, action) {
 
 	switch(action.type) {
 

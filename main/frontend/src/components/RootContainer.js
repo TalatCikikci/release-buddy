@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 
-import {auth} from "./actions/MainAction";
+import {auth} from "../actions/MainAction";
 
 import {HeaderComponent} from './Header';
 import {RequirementModelComponent} from './RequirementModel';
